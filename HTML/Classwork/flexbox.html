@@ -62,11 +62,24 @@
   flex-basis: 300px;
   align-self: center;
 }
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+.heart {
+  font-size: 100px;
+  color: red;
+  animation: pulse 0.8s ease-in-out infinite;
+}
+
+
 
 
 
 
 
 </style>
+<div class="heart">❤️</div>
 </body>
 </html>

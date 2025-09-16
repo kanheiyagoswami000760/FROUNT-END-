@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<style>
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.square {
+  width: 80px;
+  height: 80px;
+  background: dodgerblue;
+  animation: spin 2s linear infinite;
+  align-items: center;
+    justify-content: center;
+}
+</style>
+
+<div class="square"></div>
+<style>
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-100px); }
+}
+
+.ball {
+  width: 50px;
+  height: 50px;
+  background: orange;
+  border-radius: 50%;
+  animation: bounce 1s ease-in-out infinite;
+}
+</style>
+
+<div class="ball"></div>
+<style>
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+.heart {
+  font-size: 100px;
+  color: red;
+  animation: pulse 0.8s ease-in-out infinite;
+}
+</style>
+
+<div class="heart">❤️</div>
+
+<style>
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+.typewriter {
+  font-size: 1.5rem;
+  font-family: monospace;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid black;
+  width: 0;
+  animation: typing 3s steps(20) forwards, blink 0.7s step-end infinite;
+}
+</style>
+
+<p class="typewriter">Hello, I’m learning CSS 🎉</p>
+
+
+
+
+
+
+</body>
+</html>
