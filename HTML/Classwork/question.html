@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Position & Z-Index Example</title>
+  <style>    
+
+    .container {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      background: #ddd;
+      border: 2px solid #333;
+      margin: 20px auto;
+    }
+
+    .box {
+      width: 150px;
+      height: 150px;
+      color: white;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+    }
+
+    
+    .box1 {
+      background: crimson;
+      top: 50px;
+      left: 50px;
+      z-index: 1;
+    }
+
+    .box2 {
+      background: royalblue;
+      top: 100px;
+      left: 100px;
+      z-index: 2;
+    }
+
+    .box3 {
+      background: seagreen;
+      top: 150px;
+      left: 150px;
+      z-index: 3; 
+    }
+
+    
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="box box1">Box 1</div>
+    <div class="box box2">Box 2</div>
+    <div class="box box3">Box 3</div>
+  </div>
+
+</body>
+</html>
