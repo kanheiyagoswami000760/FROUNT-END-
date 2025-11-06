@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Profile Card Studio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <script src="script.js"></script>
+  <div class="wrap">
+    <div class="studio">
+      <header>
+        <h1>Profile Card Studio</h1>
+        <p class="muted">Edit fields on the right to manipulate the live preview. Practice DOM APIs in the script (comments show which API is used where).</p>
+      </header>
+
+      <main id="previewArea">
+        <article id="profileCard" class="theme-blue" aria-label="profile card">
+          <img id="avatar" src="https://image.cnbcfm.com/api/v1/image/107300149-1694619484044-gettyimages-1662848092-AI_CEOs_512_091323.jpeg?v=1694619529&w=800&h=600&ffmt=webp" alt="avatar placeholder">
+          <div class="meta">
+            <h2 id="displayName" class="name">Bill Gates</h2>
+            <h3 id="displayRole" class="role">Frontend Developer</h3>
+            <p id="displayBio" class="bio">philanthropist, rich  </p>
+            <div class="skills" id="skillsContainer" aria-live="polite">
+              <span class="skill">HTML <button class="remove">×</button></span>
+              <span class="skill">CSS <button class="remove">×</button></span>
+              <span class="skill">JavaScript <button class="remove">×</button></span>
+            </div>
+            <div class="details" id="detailsBlock">
+              <div class="muted">Extra details</div>
+              <ul>
+                <li>Location: Remote</li>
+                <li>Experience: 3 years</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </main>
+    </div>
+
+    <aside class="panel">
+      <h3>Control Panel</h3>
+      <div class="field"><label>Name</label><input id="nameInput" type="text" value="Alex Morgan"></div>
+      <div class="field"><label>Role</label><input id="roleInput" type="text" value="Frontend Developer"></div>
+      <div class="field"><label>Bio</label><textarea id="bioInput" rows="4">A curious developer who loves building small interactive UI experiments. Loves coffee, cats and clean code.</textarea></div>
+      <div class="field"><label>Profile image URL</label><input id="imgInput" type="text"><button id="setImgBtn">Set Image</button><div id="imgError" class="error" style="display:none">Image failed to load — using placeholder.</div></div>
+      <div class="field"><label>Add skill</label><input id="skillInput" type="text"><button id="addSkillBtn">Add</button><button id="removeLastSkillBtn">Remove last</button></div>
+      <div class="field"><label>Theme</label><div id="themeChoices"><button class="theme-btn" data-color="blue">Blue</button><button class="theme-btn" data-color="green">Green</button><button class="theme-btn" data-color="peach">Peach</button><button class="theme-btn" data-color="dark">Dark</button></div></div>
+      <div class="field"><label>Details</label><button id="toggleDetailsBtn">Toggle details</button></div>
+      <button id="saveBtn">Save</button><button id="loadBtn">Load</button>
+    </aside>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

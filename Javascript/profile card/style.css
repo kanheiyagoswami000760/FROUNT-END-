@@ -1,0 +1,90 @@
+:root {
+  --card-padding: 16px;
+  --radius: 12px;
+  --transition: 200ms ease;
+}
+body {
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background: #eef2ff;
+  margin: 0;
+  padding: 24px;
+  color: #1e1b4b;
+}
+.wrap {
+  max-width: 980px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 20px;
+  align-items: start;
+}
+.studio {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(79, 70, 229, 0.12); /* indigo glow */
+}
+header h1 {
+  margin: 0 0 12px 0;
+  font-size: 20px;
+  color: #4338ca; /* rich indigo heading */
+}
+#profileCard {
+  padding: var(--card-padding);
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, #ffffff, #f3f4ff);
+  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.08);
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+#avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 10px;
+  object-fit: cover;
+  background: linear-gradient(90deg, #a5b4fc, #c7d2fe);
+}
+.meta {
+  flex: 1;
+}
+.name {
+  font-size: 20px;
+  margin: 0 0 4px 0;
+  color: #3730a3;
+}
+.role {
+  margin: 0 0 8px 0;
+  color: #6366f1;
+}
+.bio {
+  margin: 0 0 12px 0;
+  white-space: pre-wrap;
+}
+.skills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.skill {
+  background: #e0e7ff;
+  padding: 6px 8px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #312e81;
+}
+.skill .remove {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-weight: 700;
+  color: #4f46e5;
+}
+.details {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 8px
+}
