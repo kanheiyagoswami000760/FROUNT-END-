@@ -18,11 +18,14 @@
             height: 200px;
             background-color: lightblue;
             margin-bottom: 20px;
+            transition: all 2s ease ;
         }
         .big-box{
             width: 400px;
             height: 400px;
-            background-color: lightcoral;   
+            background-color: lightcoral; 
+            transition: all 3s ease ; 
+            border-radius: 50%; 
         }
     </style>
 </head>
@@ -38,10 +41,13 @@
 
        box.classList.add('small-box');
 
-       //event handler function
+       
        btn.addEventListener('click', function() {
-           box.classList.add('big-box');
-           box
+           
+           box.classList.toggle('big-box');
+           box.classList.toggle('small-box');
+
+
 
        });
     </script>
