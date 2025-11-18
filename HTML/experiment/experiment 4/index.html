@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Space Landing — Bootstrap Landing Page</title>
+ 
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+ 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+
+    :root {
+      --accent:#6ee7b7;
+      --dark:#0b1220;
+      --muted:#9aa5b1;
+    }
+    html,body{height:100%;}
+    body{
+      background: radial-gradient(ellipse at bottom, #00111a 0%, #000814 60%);
+      color: #e6f0f2;
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      overflow-x:hidden;
+    }
+
+    .stars {
+      position:fixed; inset:0; z-index:0; pointer-events:none;
+      background-image:
+        radial-gradient(2px 2px at 10% 20%, rgba(255,255,255,0.9), transparent),
+        radial-gradient(1.5px 1.5px at 40% 10%, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1px 1px at 80% 70%, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1.3px 1.3px at 60% 40%, rgba(255,255,255,0.5), transparent);
+      background-size: 1200px 800px;
+      animation: twinkle 8s linear infinite;
+      opacity:0.9;
+    }
+    @keyframes twinkle{
+      0%{filter:brightness(0.9)}
+      50%{filter:brightness(1.3)}
+      100%{filter:brightness(0.9)}
+    }
+
+    .navbar-nav .nav-link{
+      position:relative;
+      transition: all 280ms ease;
+      border-radius: .375rem;
+      padding:.4rem .75rem;
+      color: #dfeff2!important;
+    }
+    .navbar-nav .nav-link:hover{
+      transform: translateY(-4px) scale(1.03);
+      background: linear-gradient(90deg, rgba(110,231,183,0.12), rgba(255,255,255,0.02));
+      color: var(--accent) !important;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.45);
+    }
+
+    
+    .hero{
+      padding: 6rem 0 4rem; position:relative; z-index:2;
+    }
+    .hero .lead{
+      color:rgba(230,240,242,0.9);
+    }
+
+    
+    @keyframes floaty {
+      0%{ transform: translateY(0) rotate(-2deg); }
+      50%{ transform: translateY(-18px) rotate(4deg); }
+      100%{ transform: translateY(0) rotate(-2deg); }
+    }
+    @keyframes rocket-launch {
+      0%{ transform: translateY(0) rotate(-8deg) scale(.9); opacity:0.95 }
+      30%{ transform: translateY(-40vh) rotate(-2deg) scale(1.02); opacity:1 }
+      60%{ transform: translateY(-90vh) rotate(6deg) scale(1.05); opacity:0.9 }
+      100%{ transform: translateY(-140vh) rotate(12deg) scale(.98); opacity:0 }
+    }
+
+   
+    .astronaut{
+      width:160px; max-width:22vw; position:absolute; right:5%; top:18%; z-index:3; transform-origin:center;
+      animation: floaty 6s ease-in-out infinite;
+    }
+    .rocket{
+      width:120px; max-width:16vw; position:absolute; left:6%; top:55%; z-index:3; transform-origin:center;
+      animation: rocket-launch 12s ease-in-out infinite;
+    }
+
+
+    .feature-card{ background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02)); border:1px solid rgba(255,255,255,0.04); }
+
+    
+    footer{ padding:2.5rem 0; color:var(--muted); border-top:1px solid rgba(255,255,255,0.03); }
+
+    @media (max-width:768px){
+      .astronaut{ display:none }
+      .rocket{ left:3%; top:60% }
+      .hero{ padding-top:4rem }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="stars" aria-hidden="true"></div>
+
+  
+  <nav class="navbar navbar-expand-lg navbar-dark bg-transparent py-3" style="z-index:4; position:relative;">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <i class="fa-solid fa-galaxy me-2"></i>
+        <strong>Orbital</strong>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+          <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          <li class="nav-item ms-lg-3"><a class="btn btn-outline-light btn-sm" href="#">Get Started</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <header class="hero">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <h1 class="display-5 fw-bold">Launch into the next frontier</h1>
+          <p class="lead mt-3">Beautifully crafted space experiences for studios, startups, and explorers. Build, visualize, and launch ideas — in orbit.</p>
+          <div class="mt-4">
+            <a href="#features" class="btn btn-lg btn-primary me-2">Explore features</a>
+            <a href="#pricing" class="btn btn-lg btn-outline-light">Pricing</a>
+          </div>
+          <div class="mt-4 text-muted small">Trusted by teams at <strong>AstroLabs</strong>, <strong>Skyframe</strong>, and <strong>Nova</strong>.</div>
+        </div>
+        <div class="col-lg-6 position-relative">
+          
+          <div id="heroCarousel" class="carousel slide shadow-lg rounded-3" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=1400&q=60" class="d-block w-100 rounded-3" alt="nebula">
+              </div>
+              <div class="carousel-item">
+                <img src="https://images.unsplash.com/photo-1444152908591-1b6d1d2c8b6f?auto=format&fit=crop&w=1400&q=60" class="d-block w-100 rounded-3" alt="earth from space">
+              </div>
+              <div class="carousel-item">
+                <img src="https://images.unsplash.com/photo-1454789548928-9efd52dc4031?auto=format&fit=crop&w=1400&q=60" class="d-block w-100 rounded-3" alt="satellite">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <img src="https://images.unsplash.com/photo-1533112191292-5993b8f0d6f7?auto=format&fit=crop&w=800&q=60" alt="astronaut" class="astronaut" />
+    <img src="https://images.unsplash.com/photo-1545324413-5a8dfe5a8b2f?auto=format&fit=crop&w=800&q=60" alt="rocket" class="rocket" />
+  </header>
+
+  <section id="features" class="py-5">
+    <div class="container">
+      <div class="row mb-4">
+        <div class="col-md-8">
+          <h2 class="fw-bold">Features built for exploration</h2>
+          <p class="text-muted">From real-time previewing to collaborative mission planning — everything you need to prototype beautiful space experiences.</p>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4">
+          <div class="p-4 feature-card rounded-3 h-100">
+            <h5 class="fw-semibold">Real-time Simulation</h5>
+            <p class="small text-muted">Visualize trajectories and environments with live parameters and instant previews.</p>
+            <a href="#" class="small">Learn more →</a>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="p-4 feature-card rounded-3 h-100">
+            <h5 class="fw-semibold">Collaborative Workspaces</h5>
+            <p class="small text-muted">Invite team members, leave notes, and work together in shared mission files.</p>
+            <a href="#" class="small">Learn more →</a>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="p-4 feature-card rounded-3 h-100">
+            <h5 class="fw-semibold">Deploy & Share</h5>
+            <p class="small text-muted">Publish interactive scenes and share them with a single link or embed them on a site.</p>
+            <a href="#" class="small">Learn more →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="gallery" class="py-5 bg-transparent">
+    <div class="container">
+      <div class="row align-items-center mb-4">
+        <div class="col-md-8">
+          <h3 class="fw-bold">Gallery</h3>
+          <p class="text-muted">A few snapshots from missions, simulations, and visual experiments.</p>
+        </div>
+        <div class="col-md-4 text-md-end">
+          <a class="btn btn-sm btn-outline-light" href="#">View all</a>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-sm-6 col-lg-3">
+          <div class="card bg-transparent border-0">
+            <img src="https://images.unsplash.com/photo-1454789548928-9efd52dc4031?auto=format&fit=crop&w=800&q=60" class="card-img-top rounded-3 shadow-sm" alt="img">
+            <div class="card-body text-muted small">Low Earth Orbit — simulation snapshot</div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <div class="card bg-transparent border-0">
+            <img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=800&q=60" class="card-img-top rounded-3 shadow-sm" alt="img">
+            <div class="card-body text-muted small">Nebula — procedural skybox</div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <div class="card bg-transparent border-0">
+            <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=800&q=60" class="card-img-top rounded-3 shadow-sm" alt="img">
+            <div class="card-body text-muted small">Mission Control UI</div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <div class="card bg-transparent border-0">
+            <img src="https://images.unsplash.com/photo-1470770903676-69b98201ea1c?auto=format&fit=crop&w=800&q=60" class="card-img-top rounded-3 shadow-sm" alt="img">
+            <div class="card-body text-muted small">Rendezvous visualization</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ 
+  <section id="pricing" class="py-5">
+    <div class="container">
+      <div class="row mb-4">
+        <div class="col-md-8">
+          <h3 class="fw-bold">Simple pricing</h3>
+          <p class="text-muted">One plan for hobbyists, teams, and enterprises — scale as you grow.</p>
+        </div>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card feature-card p-4 h-100 rounded-3">
+            <h5>Hobby</h5>
+            <div class="display-6 fw-bold">$0</div>
+            <p class="small text-muted">Try things out — includes basic missions and 3 projects.</p>
+            <a class="btn btn-outline-light btn-sm">Start free</a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card feature-card p-4 h-100 rounded-3">
+            <h5>Team</h5>
+            <div class="display-6 fw-bold">$49</div>
+            <p class="small text-muted">Collaboration features, unlimited projects, SSO options.</p>
+            <a class="btn btn-primary btn-sm">Get team</a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card feature-card p-4 h-100 rounded-3">
+            <h5>Enterprise</h5>
+            <div class="display-6 fw-bold">Contact</div>
+            <p class="small text-muted">Custom SLA, on-premise, and dedicated support.</p>
+            <a class="btn btn-outline-light btn-sm">Contact sales</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="py-5 bg-transparent">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <h4>Stay in touch</h4>
+          <p class="text-muted">Get updates about new features, public demos, and launches.</p>
+          <form class="row g-2">
+            <div class="col-8">
+              <input class="form-control form-control-dark" placeholder="Your email" aria-label="email">
+            </div>
+            <div class="col-4">
+              <button class="btn btn-primary w-100" type="submit">Subscribe</button>
+            </div>
+          </form>
+        </div>
+        <div class="col-lg-6 text-lg-end mt-4 mt-lg-0">
+          <p class="small text-muted mb-1">Follow us</p>
+          <a class="me-3 text-muted" href="#"><i class="fa-brands fa-twitter fa-lg"></i></a>
+          <a class="me-3 text-muted" href="#"><i class="fa-brands fa-instagram fa-lg"></i></a>
+          <a class="me-3 text-muted" href="#"><i class="fa-brands fa-github fa-lg"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+      <div class="mb-3 mb-md-0">© <strong>Orbital</strong> — Made with 🚀</div>
+      <div class="small text-muted">Built with Bootstrap • Responsive • Accessible</div>
+    </div>
+  </footer>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    
+    document.querySelectorAll('.carousel').forEach(c => {
+      c.addEventListener('mouseenter', () => bootstrap.Carousel.getInstance(c).pause());
+      c.addEventListener('mouseleave', () => bootstrap.Carousel.getInstance(c).cycle());
+    });
+
+    
+    document.querySelectorAll('.nav-link[href^="#"]').forEach(a => {
+      a.addEventListener('click', function(e){
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
+      });
+    });
+  </script>
+</body>
+</html>
