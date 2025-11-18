@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Live Character Counter</title>
+  <style>
+    body{font-family:Arial;padding:18px;max-width:640px}
+    textarea{width:100%;height:120px;padding:8px;font-size:14px}
+    .info{margin-top:8px;font-weight:600}
+    .green{color:green}
+    .orange{color:orange}
+    .red{color:red}
+  </style>
+</head>
+<body>
+  <h3>Live Character Counter</h3>
+  <textarea id="ta" maxlength="100" placeholder="Type here..."></textarea>
+  <div id="counter" class="info">Characters left: 100</div>
+
+  <script>
+    const LIMIT = 100;
+    const ta = document.getElementById('ta');
+    const counter = document.getElementById('counter');
+
+    function update(){
+      const left = LIMIT - ta.value.length;
+      counter.textContent = 'Characters left: ' + left;
+
+      counter.className = 'info';
+      if(left <= 10) counter.classList.add('red');
+      else if(left <= 30) counter.classList.add('orange');
+      else counter.classList.add('green');
+    }
+
+    ta.addEventListener('input', () => {
+      if(ta.value.length > LIMIT) ta.value = ta.value.slice(0, LIMIT);
+      update();
+    });
+
+    update();
+  </script>
+</body>
+</html>
+
