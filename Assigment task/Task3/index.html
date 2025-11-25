@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Image Carousel</title>
+  <style>
+    body { font-family: Arial; text-align: center; padding: 20px; }
+    #carousel {
+      width: 400px;
+      height: 250px;
+      margin: auto;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    #carousel img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    button { margin: 10px; padding: 8px 12px; }
+  </style>
+</head>
+<body>
+  <h2>Image Carousel</h2>
+
+  <div id="carousel">
+    <img id="slide" src="https://picsum.photos/id/101/400/250" />
+  </div>
+
+  <div>
+    <button onclick="prevImg()">Previous</button>
+    <button onclick="nextImg()">Next</button>
+  </div>
+
+ <script>
+    const images = [
+      "https://picsum.photos/id/101/400/250",
+      "https://picsum.photos/id/102/400/250",
+      "https://images.radiocity.in/images/uploads/web-stories/uejifc_ws.png",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQR2MWx1VB-mPa7V1ONBiXFuUfLNBQxjzvVRA&s",
+      "https://i.ytimg.com/vi/Xke5Mf-OxuM/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH0CYAC0AWKAgwIABABGH8gPygyMA8=&rs=AOn4CLBzStn0KGfeQ8RvLWcVOtw7U0gvwQ"
+    ];
+
+    let index = 0;
+    let interval;
+    const slide = document.getElementById("slide");
+    const carousel = document.getElementById("carousel");
+
+    function showImg() {
+      slide.src = images[index];
+    }
+
+    function nextImg() {
+      index = (index + 1) % images.length;
+      showImg();
+    }
+
+    function prevImg() {
+      index = (index - 1 + images.length) % images.length;
+      showImg();
+    }
+
+    function startCarousel() {
+      interval = setInterval(nextImg, 3000); // auto-slide every 3 sec
+    }
+
+    function stopCarousel() {
+      clearInterval(interval);
+    }
+
+    // Bonus: pause on hover
+    carousel.addEventListener("mouseover", stopCarousel);
+    carousel.addEventListener("mouseout", startCarousel);
+
+    // Initial start
+    startCarousel();
+  </script>
+</body>
+</html>

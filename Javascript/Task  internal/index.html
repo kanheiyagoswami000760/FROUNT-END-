@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MCQ List</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #fafafa;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+    }
+    .quiz-box {
+        width: 100%;
+        max-width: 600px;
+        background: white;
+        border: 1px solid #ddd;
+        padding: 20px;
+        border-radius: 10px;
+    }
+    .question-block {
+        margin-bottom: 25px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #eee;
+    }
+    .question-block h3 {
+        margin-bottom: 10px;
+        font-size: 1.1rem;
+    }
+    .option {
+        padding: 10px;
+        margin: 6px 0;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+    .option.correct { background: #c8f7c5; border-color: #2ecc71; }
+    .option.wrong   { background: #f7c5c5; border-color: #e74c3c; }
+
+    .correct-answer-text {
+        margin-top: 8px;
+        font-size: 0.9rem;
+        color: #2ecc71;
+        display: none;
+    }
+</style>
+</head>
+
+<body>
+<div class="quiz-box" id="quizContainer"></div>
+
+<script>
+
+const quiz = [
+  { question: "Capital of France?",          a:"Berlin", b:"Madrid", c:"Paris", d:"Rome", correct:"c" },
+  { question: "largest Planet is?",              a:"Earth",  b:"Mars",   c:"Venus", d:"Jupiter", correct:"d" },
+  { question: "Largest mammal?",             a:"Elephant", b:"Blue Whale", c:"Shark", d:"Giraffe", correct:"b" },
+  { question: "Css stands for?",            a:"HighText Machine Language", b:"HyperText Markup Language", c:"Hyper Tool Marking Level", d:"None", correct:"d" },
+  { question: "Fastest land animal?",        a:"Cheetah", b:"Horse", c:"Lion", d:"Leopard", correct:"a" }
+];
+
+
+const container = document.getElementById("quizContainer");
+
+quiz.forEach((q, idx) => {
+    const block = document.createElement("div");
+    block.className = "question-block";
+
+    block.innerHTML = `
+        <h3>${idx+1}. ${q.question}</h3>
+
+        <div class="option" onclick="selectAnswer(this, '${q.correct}', '${q.a}', '${q.question}', 'a')">${q.a}</div>
+        <div class="option" onclick="selectAnswer(this, '${q.correct}', '${q.b}', '${q.question}', 'b')">${q.b}</div>
+        <div class="option" onclick="selectAnswer(this, '${q.correct}', '${q.c}', '${q.question}', 'c')">${q.c}</div>
+        <div class="option" onclick="selectAnswer(this, '${q.correct}', '${q.d}', '${q.question}', 'd')">${q.d}</div>
+
+        <p class="correct-answer-text">Correct Answer: ${q[q.correct]}</p>
+    `;
+
+    container.appendChild(block);
+});
+
+
+function selectAnswer(selectedOption, correctKey, chosenText, question, optionKey) {
+
+    let block = selectedOption.parentElement;
+    let options = block.querySelectorAll(".option");
+
+    
+    if ([...options].some(opt => opt.classList.contains("correct") || opt.classList.contains("wrong"))) {
+        return;
+    }
+
+    if (optionKey === correctKey) {
+        selectedOption.classList.add("correct");
+    } else {
+        selectedOption.classList.add("wrong");
+
+
+        options.forEach(opt => {
+            if (opt.innerText === block.querySelector(".correct-answer-text").innerText.replace("Correct Answer: ", "")) {
+                opt.classList.add("correct");
+            }
+        });
+
+    
+        block.querySelector(".correct-answer-text").style.display = "block";
+    }
+}
+</script>
+
+</body>
+</html>

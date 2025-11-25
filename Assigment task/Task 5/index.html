@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Interactive Product Filter</title>
+  <style>
+    body { font-family: Arial; max-width: 600px; margin: 30px auto; }
+    button { margin: 5px; padding: 8px 12px; }
+    #products { margin-top: 20px; }
+    .item { padding: 6px 0; border-bottom: 1px solid #ddd; }
+    #search { width: 100%; padding: 8px; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <h2>Product Filter</h2>
+
+  <button onclick="filterProducts('all')">All</button>
+  <button onclick="filterProducts('electronics')">Electronics</button>
+  <button onclick="filterProducts('clothing')">Clothing</button>
+
+  <input id="search" type="text" placeholder="Search products..." oninput="filterProducts(currentFilter)">
+
+  <div id="products"></div>
+
+  <script>
+    const products = [
+      { name: "Laptop", category: "electronics" },
+      { name: "Mobile Phone", category: "electronics" },
+      { name: "Headphones", category: "electronics" },
+      { name: "Smartwatch", category: "electronics" },
+      { name: "Bluetooth Speaker", category: "electronics" },
+     { name: "Tablet", category: "electronics" },
+      { name: "Gaming Mouse", category: "electronics" },
+
+      { name: "T-Shirt", category: "clothing" },
+      { name: "Jeans", category: "clothing" },
+      { name: "Jacket", category: "clothing" },
+      { name: "Shirt", category: "clothing" },
+      { name: "Hoodie", category: "clothing" },
+      { name: "Shorts", category: "clothing" },
+      { name: "Cap", category: "clothing" },
+
+      { name: "Novel - The Alchemist", category: "books" },
+      { name: "Notebook", category: "books" },
+      { name: "Story Book", category: "books" },
+      { name: "Programming Guide", category: "books" },
+      { name: "Science Encyclopedia", category: "books" },
+      { name: "Comics - Marvel", category: "books" }
+    ];
+
+    let currentFilter = 'all';
+
+    function filterProducts(category) {
+      currentFilter = category;
+      const searchVal = document.getElementById("search").value.toLowerCase();
+
+      let filtered = products.filter(p => {
+        const matchesCategory = category === 'all' || p.category === category;
+        const matchesSearch = p.name.toLowerCase().includes(searchVal);
+        return matchesCategory && matchesSearch;
+      });
+
+      display(filtered);
+        }
+
+    function display(list) {
+      const box = document.getElementById("products");
+      box.innerHTML = "";
+      list.forEach(item => {
+        box.innerHTML += <div class='item'>${item.name} (${item.category})</div>;
+      });
+    }
+
+    filterProducts('all');
+  </script>
+</body>
+</html>

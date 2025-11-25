@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Form Validation App</title>
+  <style>
+    body { font-family: Arial; max-width: 500px; margin: 30px auto; }
+    .field { margin-bottom: 15px; }
+    input { width: 100%; padding: 8px; font-size: 14px; border: 2px solid #ccc; border-radius: 5px; }
+    .error { color: red; font-size: 13px; margin-top: 3px; }
+    .valid { border-color: green; }
+    .invalid { border-color: red; }
+    button { padding: 10px 15px; }
+  </style>
+</head>
+<body>
+  <h2>Registration Form</h2>
+
+  <form id="regForm" onsubmit="validate(event)">
+
+    <div class="field">
+      <label>Name:</label>
+      <input type="text" id="name">
+      <div class="error" id="nameError"></div>
+    </div>
+
+    <div class="field">
+      <label>Email:</label>
+      <input type="text" id="email">
+      <div class="error" id="emailError"></div>
+    </div>
+
+    <div class="field">
+ <label>Password:</label>
+      <input type="password" id="password">
+      <div class="error" id="passError"></div>
+    </div>
+
+    <button type="submit">Register</button>
+  </form>
+
+  <script>
+    function validate(e) {
+      e.preventDefault();
+      let valid = true;
+
+      const name = document.getElementById('name');
+      const email = document.getElementById('email');
+      const pass = document.getElementById('password');
+
+      const nameErr = document.getElementById('nameError');
+      const emailErr = document.getElementById('emailError');
+      const passErr = document.getElementById('passError');
+
+      nameErr.textContent = emailErr.textContent = passErr.textContent = "";
+      name.classList.remove('valid','invalid');
+      email.classList.remove('valid','invalid');
+      pass.classList.remove('valid','invalid');
+
+      if(name.value.trim() === ""){
+        nameErr.textContent = "Name is required";
+        name.classList.add('invalid');
+        valid = false;
+      } else {
+           name.classList.add('valid');
+      }
+
+      if(email.value.trim() === ""){
+        emailErr.textContent = "Email is required";
+        email.classList.add('invalid');
+        valid = false;
+      } else if(!email.value.includes('@')){
+        emailErr.textContent = "Invalid email";
+        email.classList.add('invalid');
+        valid = false;
+      } else {
+        email.classList.add('valid');
+      }
+
+      if(pass.value.trim() === ""){
+        passErr.textContent = "Password is required";
+        pass.classList.add('invalid');
+        valid = false;
+      } else if(pass.value.length < 8){
+        passErr.textContent = "Password must be at least 8 characters";
+        pass.classList.add('invalid');
+        valid = false;
+      } else {
+         pass.classList.add('valid');
+      }
+
+      if(valid){
+        alert('Form submitted successfully!');
+      }
+    }
+  </script>
+</body>
+</html>
